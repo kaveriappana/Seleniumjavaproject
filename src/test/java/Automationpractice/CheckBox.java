@@ -10,24 +10,13 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class CheckBox {
-    WebDriver driver;
-    @BeforeTest
-    public void setup(){
-        System.setProperty("webdriver.driver.chrome","C:\\Users\\kaveri.appana\\IdeaProjects\\Seleniumjavaproject\\chromedriver_win32 (3)\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
-    }
-    @AfterTest
-    public void quit(){
-        //driver.quit();
-    }
+public class CheckBox extends BaseTests{
     @Test
     public void checkbox(){
       WebElement checkbox = driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']"));
       checkbox.click();
       Boolean value=checkbox.isSelected();
+      Assert.assertTrue(value);
       System.out.println(value);
 
     }

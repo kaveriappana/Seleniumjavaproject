@@ -1,31 +1,13 @@
 package Automationpractice;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.util.List;
 
-public class DropDownPractice {
-    WebDriver driver;
-    @BeforeTest
-    public void setup(){
-        System.setProperty("webdriver.driver.chrome","C:\\Users\\kaveri.appana\\IdeaProjects\\Seleniumjavaproject\\chromedriver_win32 (3)\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
-
-    }
-    @AfterTest
-    public void quit(){
-        driver.quit();
-    }
+public class DropDownPractice extends BaseTests{
     @Test
     public void staticdropdown(){
 
