@@ -1,17 +1,13 @@
-package Automationpractice;
+package sampleautomation;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class Assignment1 {
+public class CountOfLinks {
     WebDriver driver;
     @BeforeTest
     public void setup(){
@@ -25,15 +21,9 @@ public class Assignment1 {
         driver.quit();
     }
     @Test
-    public void Testcheckbox(){
-        WebElement checked= driver.findElement(By.id("checkBoxOption1"));
-        checked.click();
-        Assert.assertTrue(checked.isSelected());
-        checked.click();
-        WebElement unchecked = driver.findElement(By.id("checkBoxOption1"));
-        Assert.assertFalse(unchecked.isSelected());
-        System.out.println(driver.findElements(By.cssSelector("[type='checkbox']")).size());
+    public void countoflinks(){
+        System.out.println(driver.findElements(By.tagName("a")).size());
+       // driver.
 
     }
 }
-

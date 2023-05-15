@@ -4,36 +4,36 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class Assignment1 {
+import java.time.Duration;
+
+public class Frames {
     WebDriver driver;
     @BeforeTest
     public void setup(){
         System.setProperty("webdriver.driver.chrome","C:\\Users\\kaveri.appana\\IdeaProjects\\Seleniumjavaproject\\chromedriver_win32 (3)\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+        driver.get("https://jqueryui.com/droppable/");
     }
     @AfterTest
     public void quit(){
         driver.quit();
     }
     @Test
-    public void Testcheckbox(){
-        WebElement checked= driver.findElement(By.id("checkBoxOption1"));
-        checked.click();
-        Assert.assertTrue(checked.isSelected());
-        checked.click();
-        WebElement unchecked = driver.findElement(By.id("checkBoxOption1"));
-        Assert.assertFalse(unchecked.isSelected());
-        System.out.println(driver.findElements(By.cssSelector("[type='checkbox']")).size());
+    public void framestest(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1000));
+        driver.switchTo().frame(driver.findElement(By.className("demo-frame")));
+        //driver.findElement(By.id("draggable")).click();
+        Actions action = new Actions(driver);
+        WebElement source = driver.findElement(By.id("draggable"));
+        WebElement target = driver.findElement(By.id("droppable"));
+        action.dragAndDrop(source,target).build().perform();
+        driver.switchTo().defaultContent();
 
     }
 }
-
